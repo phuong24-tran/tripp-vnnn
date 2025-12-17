@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kế hoạch Việt Nam 26/12 → 14/01</title>
+  <meta name="description" content="Lịch trình theo ngày + checklist tick được (lưu trên trình duyệt)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <div>
+        <div class="kicker">VỀ VN</div>
+        <h1 id="tripTitle">Kế hoạch Việt Nam</h1>
+        <p class="sub" id="tripSub">26/12 → 14/01 • tick được • lưu tiến độ trên máy</p>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn" id="btnExport">Xuất tiến độ (JSON)</button>
+        <label class="btn btn--ghost">
+          Nhập tiến độ
+          <input type="file" id="importFile" accept="application/json" hidden>
+        </label>
+        <button class="btn btn--danger" id="btnReset">Reset tick</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="panel">
+      <div class="panel__head">
+        <h2>Lịch theo ngày</h2>
+        <div class="controls">
+          <input id="q" class="input" placeholder="Tìm nhanh (món ăn / địa điểm / việc cần làm)..." />
+          <select id="filterCat" class="select">
+            <option value="all">Tất cả mục</option>
+            <option value="food">🍜 Ăn uống</option>
+            <option value="play">🎡 Vui chơi</option>
+            <option value="self">💅 Làm đẹp</option>
+            <option value="shop">🛍️ Mua sắm</option>
+            <option value="photo">📸 Chụp hình</option>
+            <option value="event">🎤 Sự kiện</option>
+            <option value="life">✅ Việc cần làm</option>
+          </select>
+        </div>
+      </div>
+      <div id="days" class="days"></div>
+    </section>
+
+    <aside class="panel">
+      <div class="panel__head">
+        <h2>Checklist tổng</h2>
+        <p class="muted">Tick ở đây hoặc tick trong từng ngày đều được (đồng bộ).</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab tab--active" data-tab="Ăn uống">Ăn uống</button>
+        <button class="tab" data-tab="Vui chơi">Vui chơi</button>
+        <button class="tab" data-tab="Làm đẹp & sức khoẻ">Làm đẹp</button>
+      </div>
+
+      <div class="listTools">
+        <input id="qList" class="input" placeholder="Tìm trong checklist..." />
+        <div class="progress">
+          <div class="progress__bar" id="progressBar"></div>
+        </div>
+        <div class="muted" id="progressText"></div>
+      </div>
+
+      <div id="lists" class="lists"></div>
+
+      <div class="notes">
+        <h3>Ghi chú nhanh</h3>
+        <textarea id="notes" placeholder="Ví dụ: đặt vé liveshow, hẹn salon, đặt lịch nha khoa..."></textarea>
+        <div class="notes__meta">
+          <span class="muted">Tự lưu trên trình duyệt.</span>
+          <button class="btn btn--ghost" id="btnClearNotes">Xoá ghi chú</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="muted">
+      Tip: Click vào tên địa điểm (nếu có) để mở Google Maps. Nếu bạn muốn chỉnh lịch, chỉ cần sửa file <code>data.js</code>.
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
