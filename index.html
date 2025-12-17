@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checklist VN theo chủ đề</title>
+  <meta name="description" content="Checklist theo chủ đề + tick + ghi chú (lưu trên trình duyệt)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <div>
+        <div class="kicker">VỀ VN</div>
+        <h1 id="title">Checklist theo chủ đề</h1>
+        <p class="sub">Ấn mở rộng từng mục • tick được • tự lưu tiến độ</p>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn" id="btnExport">Xuất tiến độ (JSON)</button>
+        <label class="btn btn--ghost">
+          Nhập tiến độ
+          <input type="file" id="importFile" accept="application/json" hidden>
+        </label>
+        <button class="btn btn--danger" id="btnReset">Reset tick</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="panel">
+      <div class="panel__head">
+        <h2>Danh sách theo chủ đề</h2>
+        <div class="controls">
+          <input id="q" class="input" placeholder="Tìm nhanh (gõ món/địa điểm/việc)…" />
+          <select id="filterSection" class="select">
+            <option value="all">Tất cả chủ đề</option>
+          </select>
+        </div>
+        <div class="progress">
+          <div class="progress__bar" id="progressBar"></div>
+        </div>
+        <div class="muted" id="progressText"></div>
+      </div>
+
+      <div id="sections" class="sections"></div>
+    </section>
+
+    <aside class="panel">
+      <div class="panel__head">
+        <h2>Ghi chú nhanh</h2>
+        <p class="muted">Ví dụ: đặt lịch salon, đặt vé liveshow, note giá/giờ mở cửa…</p>
+      </div>
+
+      <div class="notes">
+        <textarea id="notes" placeholder="Viết note ở đây… (tự lưu trên trình duyệt)"></textarea>
+        <div class="notes__meta">
+          <span class="muted">Tự lưu trên máy.</span>
+          <button class="btn btn--ghost" id="btnClearNotes">Xoá ghi chú</button>
+        </div>
+      </div>
+
+      <div class="panel__head" style="padding-top:0">
+        <h2>Thêm item nhanh</h2>
+        <p class="muted">Bạn nhập cái mới → chọn chủ đề → bấm thêm. (Cũng tự lưu.)</p>
+      </div>
+      <div class="adder">
+        <input id="newItem" class="input" placeholder="Ví dụ: 'trà sữa XYZ' / 'cắt tóc layer'..." />
+        <select id="newItemSection" class="select"></select>
+        <button class="btn" id="btnAdd">Thêm vào list</button>
+        <div class="muted small">Tip: Bạn vẫn có thể chỉnh tay file <code>data.js</code> sau này.</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="muted">
+      Dữ liệu gốc nằm ở <code>data.js</code>. Tick + note + item bạn thêm sẽ lưu ở trình duyệt (localStorage).
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
